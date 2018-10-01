@@ -16,13 +16,12 @@ public class ShellScriptUtil {
     public static void execute(String path){
 
         File file = new File(path);
-
         if (!file.exists() || !file.canExecute()){
             System.err.println("Unable to find/read target shell script at -"+ path);
             return;
         }
 
-        ProcessBuilder pb = new ProcessBuilder("cmd.exe",path);
+        ProcessBuilder pb = new ProcessBuilder("/bin/sh",path);
         pb.redirectErrorStream(true);
 
         Process p;

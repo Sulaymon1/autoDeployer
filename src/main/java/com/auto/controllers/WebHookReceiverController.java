@@ -81,19 +81,9 @@ public class WebHookReceiverController {
             if (Objects.nonNull(environment)){
                 String shellPath = environment.getProperty(repoKey);
                 if (shellPath != null && new File(shellPath).exists()){
-                    if (!Objects.isNull(publishMessageHint) && !publishMessageHint.isEmpty()){
-                        if (payloadMap.containsKey("head_commit")){
-                            String message = (String) ((Map<?,?>) payloadMap.get("head_commit")).get("message");
-                            if (!Objects.isNull(message) && !message.isEmpty() && message.contains(publishMessageHint)){
-                                callShellScript(shellPath);
-                            }else {
-                                System.out.println("Publish Message hint not found in message, not creating trigger file");
-                            }
-                        }
-                    }else {
-                        System.out.println("Publish Message hint is not specified. Call shell script");
-                        callShellScript(shellPath);
-                    }
+                    callShellScript(shellPath);
+                }else {
+                    System.err.println("Not found property "+repoKey );
                 }
             }
         } catch (IOException e) {
