@@ -1,5 +1,6 @@
 package com.auto.controllers;
 
+import com.auto.utils.ShellScriptUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.codec.digest.HmacUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,7 +98,7 @@ public class WebHookReceiverController {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            return new ResponseEntity<>("Unable to parse responce.", httpHeaders, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Unable to parse response.", httpHeaders, HttpStatus.BAD_REQUEST);
         }
 
         int bytes = payload.getBytes().length;
@@ -109,6 +110,6 @@ public class WebHookReceiverController {
     }
 
     private void callShellScript(String shellPath) {
-        System.out.println("were called shell script...");
+        ShellScriptUtil.execute(shellPath);
     }
 }
