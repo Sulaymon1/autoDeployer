@@ -34,3 +34,4 @@ Configuration on Github.com
 Go to your repository -> Settings -> Webhooks . Add a new webhook with your address there and use the exact same Secret Key generated in GHSecretKey step during deploying.
 
 
+https://docs.google.com/document/d/1e3hlrd8jftsPBx6S4YkBTjOpxofqkZFnlK1huVvNQrw/edit?usp=sharing
