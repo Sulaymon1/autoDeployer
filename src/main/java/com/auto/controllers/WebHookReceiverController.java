@@ -53,7 +53,7 @@ public class WebHookReceiverController {
                                   @RequestHeader("User-Agent") String userAgent){
 
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add("X-Github-Webhook-Client-Version", "appVersion");
+        httpHeaders.add("X-Github-Webhook-Client-Version", appVersion);
 
         if (Objects.isNull(userAgent) || !userAgent.startsWith(githubUserAgentPrefix)){
             return new ResponseEntity<>("Invalid request", httpHeaders, HttpStatus.BAD_REQUEST);
